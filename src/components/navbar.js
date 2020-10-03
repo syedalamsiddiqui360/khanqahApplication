@@ -32,27 +32,48 @@ function Navbar() {
                     <li class="active">
                       <NavLink to="/">Home</NavLink>
                     </li>
-                    <li><NavLink to="/bayan">Bayan</NavLink></li>
-                    <li><NavLink to="/ashar">Ashar</NavLink></li>
+                    <li><NavLink to="/about">About</NavLink></li>
                     <li class="has-children">
-                      <a href="properties.html">Book</a>
+                      <NavLink to="/bayan">Bayan</NavLink>
                       <ul class="dropdown arrow-top">
-                        <li><a href="#">Al Abraar</a></li>
-                        <li><a href="#">English book</a></li>
-                        <li><a href="#">Urdu Book</a></li>
                         <li class="has-children">
-                          <a href="#">Sub Menu</a>
+                          <a href="#">Molana Abid Shah Sb Db</a>
                           <ul class="dropdown">
-                            <li><a href="#">Menu One</a></li>
-                            <li><a href="#">Menu Two</a></li>
-                            <li><a href="#">Menu Three</a></li>
+                            <li><a href="#">Bayan</a></li>
+                            <li><a href="#">Zikar</a></li>
+                            <li><a href="#">Asfaar</a></li>
+                          </ul>
+                        </li>
+                        <li class="has-children">
+                          <a href="#">Sufi Shamim Sb Rh</a>
+                          <ul class="dropdown">
+                            <li><a href="#">Bayan</a></li>
+                            <li><a href="#">Zikar</a></li>
+                            <li><a href="#">Asfaar</a></li>
                           </ul>
                         </li>
                       </ul>
                     </li>
-                    <li><NavLink to="/book">Book</NavLink></li>
-                    <li><NavLink to="/about">About</NavLink></li>
-                    <li><NavLink to="/contact">Contact</NavLink></li>
+
+                    <li class="has-children">
+                      <NavLink to="/ashar">Ashar</NavLink>
+                      <ul class="dropdown arrow-top">
+                        <li><a href="#">Hamd</a></li>
+                        <li><a href="#">Aarifana Kalam</a></li>
+                        <li><a href="#">Naat shareef</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="has-children">
+                      <NavLink to="/book">Book</NavLink>
+                      <ul class="dropdown arrow-top">
+                        <li><a href="#">Al Abraar</a></li>
+                        <li><a href="#">English book</a></li>
+                        <li><a href="#">Urdu Book</a></li>
+                      </ul>
+                    </li>
+                    <li><NavLink to="/about">Ask</NavLink></li>
+                    <li><NavLink to="/contact">Contact Us</NavLink></li>
                   </ul>
                 </nav>
               </div>
