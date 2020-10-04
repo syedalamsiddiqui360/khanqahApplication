@@ -22,7 +22,7 @@ const [counter , setCounter] = useState(1);
 
 
                         </div>
-                        <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="col-lg-4 mb-2 mb-lg-0">
                             <div class="row mb-5">
                                 <div class="col-md-12">
                                     <h3 class="footer-heading mb-4">Navigations</h3>
@@ -48,7 +48,7 @@ const [counter , setCounter] = useState(1);
 
                         </div>
 
-                        <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="col-lg-4 mb-2 mb-lg-0">
                             <h3 class="footer-heading mb-4">Follow Us</h3>
 
                             <div>
@@ -63,13 +63,7 @@ const [counter , setCounter] = useState(1);
                         </div>
 
                     </div>
-                    <div class="row pt-5 mt-5 text-center">
-                        <div class="col-md-12">
-                            <p>
-                            </p>
-                        </div>
-
-                    </div>
+                    
                 </div>
             </footer>
 

@@ -4,6 +4,7 @@ import Upper from './list/upper';
 import DetailList from './list/detailList';
 import Lower from './list/lower';
 import SmallSlider from './smallSlider';
+import Item from './recentPost/recentItem'
 
 function Book() {
   const data = [
@@ -265,7 +266,7 @@ function Book() {
                   </div>
                 </div>
               </div>
-         
+
             </div>
 
             <div class="col-lg-4">
@@ -290,17 +291,31 @@ function Book() {
                     <input type="submit" id="phone" class="btn btn-primary" value="Send Message" />
                   </div>
                 </form>
-              
+
               </div>
 
               <div class="bg-white widget border rounded">
-                <h3 class="h4 text-black widget-title mb-3">Other Books</h3>
-                <SmallSlider  data={data} />
+                <div data-aos="fade-left" data-aos-delay="400">
+
+                  <a href="#"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid" /></a>
+                  <div class="p-4 bg-white">
+                    <span class="d-block text-secondary small text-uppercase">{data[0].date}</span>
+                    <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
+                    <p>{data[1].description}</p>
+                  </div>
+                </div>
               </div>
 
               <div class="bg-white widget border rounded">
-                <h3 class="h4 text-black widget-title mb-3">Other Books</h3>
-                <SmallSlider  data={data} />
+                <div data-aos="fade-left" data-aos-delay="600">
+
+                  <a href="#"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid" /></a>
+                  <div class="p-4 bg-white">
+                    <span class="d-block text-secondary small text-uppercase">{data[0].date}</span>
+                    <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
+                    <p>{data[1].description}</p>
+                  </div>
+                </div>
               </div>
 
             </div>
