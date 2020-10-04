@@ -72,10 +72,10 @@ function Upper(props) {
   return (
     <div>
 
-      <div class="site-section site-section-sm pb-0">
+      <div class="site-section site-section-sm pt-2 pb-0 ">
         <div class="container">
           <div class="row">
-            <form class="form-search col-md-12" style={{ margintop: "-100" }}>
+            <form class="form-search col-md-12" >
               <div class="row  align-items-end">
                 <div class="col-md-3">
                   <label for="list-types">Category</label>

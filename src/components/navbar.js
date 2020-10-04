@@ -72,6 +72,13 @@ function Navbar() {
                         <li><a href="#">Urdu Book</a></li>
                       </ul>
                     </li>
+                    <li class="has-children">
+                      <NavLink to="/detail">CDs</NavLink>
+                      <ul class="dropdown arrow-top">
+                        <li><a href="#">Molana Abid Shah Sb Db</a></li>
+                        <li><a href="#">Sufi Shamim Sb Rh</a></li>
+                      </ul>
+                    </li>
                     <li><NavLink to="/about">Ask</NavLink></li>
                     <li><NavLink to="/contact">Contact Us</NavLink></li>
                   </ul>
