@@ -5,7 +5,7 @@ function Middle(props) {
   
     return (
         <div>
-            <div class="row mb-5">
+            <div class="row">
                 {
                     props.list.slice(props.start, props.end).map((value, index) => {
                         return (<div class="col-md-6 col-lg-4 mb-4">

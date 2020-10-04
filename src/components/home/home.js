@@ -1,7 +1,7 @@
 import React from 'react';
 import OurAgent from '../ourAgent/ourAgent';
-import RecentBlog from '../recentBlog/recentBlog';
-import WhyChooseUs from '../whyChooseUs';
+import RecentPost from '../recentPost/recentPost';
+import DemoSection from '../demoSection/demo';
 import List from '../list/list';
 import BookSection from '../bookSection/bookSection'
 
@@ -18,10 +18,10 @@ function Home(props) {
       </div>
 
       <div>
-        <WhyChooseUs />
+        <DemoSection />
       </div>
       <div>
-        <RecentBlog />
+        <RecentPost />
       </div>
 
 

@@ -8,11 +8,11 @@ function Item() {
             <div class="team-member">
 
                 <div class="row ">
-                    <div class="col-md-6 col-lg-6  ">
+                    <div class="col-md-6 col-lg-6 property-entry " data-aos="fade-down" data-aos-delay="500">
 
                         <img src="assets/images/hero_bg_1.jpg" alt="Image" class="img-fluid rounded mb-4" />
                     </div>
-                    <div class="col-md-6 col-lg-6  ">
+                    <div class="col-md-6 col-lg-6 property-entry " data-aos="fade-down" data-aos-delay="600">
 
                         <img src="assets/images/hero_bg_2.jpg" alt="Image" class="img-fluid rounded mb-4" />
                     </div>
@@ -26,8 +26,11 @@ function Item() {
                         <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
                         <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
                     </p> */}
+                    <div data-aos="fade-left" data-aos-delay="900">
+
+                    
                     <Audio audioUrl={"audio/16 Sunday 24-04-2011 - Ashaar (after bayan).mp3"}/>
- 
+ </div>
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Upper from './list/upper'
-import Item from './recentBlog/item';
+import Item from './recentPost/recentItem';
 import Lower from './list/lower';
 import List from './list/list';
 
@@ -61,6 +61,15 @@ function Bayan() {
     }
   ]
 
+  useEffect(()=>{
+    get(); 
+ },[])
+
+const  get = () =>{
+console.log("api")
+ }
+
+
   return (
     <div>
     {/*   <Upper />
@@ -80,7 +89,7 @@ function Bayan() {
           </div>
         </div>
       </div> */}
-      <List/>
+      <List  />
     </div >
 
   );

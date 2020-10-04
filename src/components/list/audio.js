@@ -8,8 +8,8 @@ function Audio(props) {
              <AudioPlayer
                     autoPlayAfterSrcChange={false}
                     src={props.audioUrl}
-                    style={{paddingTop:"12%"}}
-                />
+                    style={{paddingTop:"11%"}}
+                /> 
         </div >
 
     )
