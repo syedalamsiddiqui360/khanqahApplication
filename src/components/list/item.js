@@ -1,8 +1,8 @@
 import React from 'react';
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
+
 import LowerItem from './lowerItem'
 import LowerItem1 from './lowerItem1'
+import Audio from './audio'
 
 function Item(props) {
     return (
@@ -12,11 +12,7 @@ function Item(props) {
                     <span class={props.tag1CN}>{props.tag1}</span>
                     <span class={props.tag2CN}>{props.tag2}</span>
                 </div>
-                <AudioPlayer
-                    autoPlayAfterSrcChange={false}
-                    src={props.audioUrl}
-                    style={{paddingTop:"12%"}}
-                />
+               <Audio audioUrl={props.audioUrl} />
             </div>
             <div class="p-4 property-body">
                 <LowerItem name={props.name} description={props.description} date={props.date} />
