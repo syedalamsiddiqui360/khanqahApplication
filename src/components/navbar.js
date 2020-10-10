@@ -32,18 +32,8 @@ function Navbar() {
                     <li class="active">
                       <NavLink to="/">Home</NavLink>
                     </li>
-                    {/* <li><NavLink to="/about">About</NavLink></li> */}
-                    <li><Link 
-                    // to={{pathname:"/about" , state:{fromHome:"ahmed"}}} 
-                    to={{
-                      pathname: "/about",
-                      query: {
-                        title: "post.title", 
-                        content: "post.content",
-                        comments: "JSON.stringify(post.comments)"
-                      } }}
-                    >About1</Link></li>
-
+                    <li><NavLink to="/about">About</NavLink></li>
+                   
                     <li class="has-children">
                       <NavLink to="/bayan">Bayan</NavLink>
                       <ul class="dropdown arrow-top">
@@ -107,7 +97,7 @@ function Navbar() {
         <div class="site-blocks-cover overlay"
           style={{ background: 'url(assets/images/hero_bg_1.jpg)',height:"20px" }}
           data-aos="fade" data-stellar-background-ratio="0.5">
-          <div class="container">
+          {/* <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
                 <span class="d-inline-block bg-success text-white px-3 mb-0 property-offer-type rounded">For Rent</span>
@@ -116,13 +106,13 @@ function Navbar() {
                 <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div class="site-blocks-cover overlay"
           style={{ background: 'url(assets/images/hero_bg_2.jpg)',height:"20px" }}
           data-aos="fade" data-stellar-background-ratio="0.5">
-          <div class="container">
+          {/* <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
                 <span class="d-inline-block bg-danger text-white px-3 mb-0 property-offer-type rounded">For Sale</span>
@@ -131,7 +121,7 @@ function Navbar() {
                 <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
       </div>

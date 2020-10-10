@@ -28,7 +28,7 @@ function Item(props) {
                   />
                </div>
                <a class="service text-center">
-               <p><span class="read-more">More</span></p>
+               <p><span class="read-more">View More</span></p>
                </a>
                 {/* <span class="d-block text-secondary small text-uppercase">{props.date}</span>
                 <h2 class="h5 text-black mb-3"><a href="#">{props.name}</a></h2>
