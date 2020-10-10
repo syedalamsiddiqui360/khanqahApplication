@@ -36,9 +36,9 @@ function BookSection() {
 
     return (
         <div>
-            <div class="site-section bg-light">
+            <div class="site-section">
                 <div class="container">
-            {/*         <div class="row justify-content-center mb-5">
+                    {/*         <div class="row justify-content-center mb-5">
                         <div class="col-md-7 text-center">
                             <div class="site-section-title">
                                 <h2>Recent Post</h2>
@@ -48,20 +48,20 @@ function BookSection() {
                     </div>
 
                     <div class="row"> */}
-          <div class="row mb-5">
+                    <div class="row">
 
                         {
                             data.map((value, index) => {
                                 return (
-                                        
-                                      
+
+
                                     <Item data={data} name={value.name} />
-                                    
+
                                 )
                             })
                         }
 
-</div>
+                    </div>
 
 
 
@@ -70,7 +70,7 @@ function BookSection() {
 
 
 
-        </div > 
+        </div >
 
     )
 }

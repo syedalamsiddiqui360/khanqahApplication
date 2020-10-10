@@ -1,9 +1,9 @@
 import React from 'react';
-import OurAgent from '../ourAgent/ourAgent';
+import OurAgent from './ourAgent/ourAgent';
 import RecentPost from '../recentPost/recentPost';
-import DemoSection from '../demoSection/demo';
+import DemoSection from './demoSection/demo';
 import List from '../list/list';
-import BookSection from '../bookSection/bookSection'
+import BookSection from './bookSection/bookSection'
 
 function Home(props) {
 
@@ -14,11 +14,10 @@ function Home(props) {
         <OurAgent />
       </div>
       <div>
-        <BookSection />
-      </div>
-
-      <div>
         <DemoSection />
+      </div>
+      <div>
+        <BookSection />
       </div>
       <div>
         <RecentPost />

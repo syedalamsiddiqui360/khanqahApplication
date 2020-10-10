@@ -35,7 +35,7 @@ function RecentBlog() {
   return (
     <div>
 
-      <div class="site-section bg-whitex">
+      <div class="site-section bg-light">
         <div class="container">
           {/* <div class="row justify-content-center ">
             <div class="col-md-7 text-center">
