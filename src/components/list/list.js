@@ -5,7 +5,7 @@ import Upper from './upper';
 
 
 
-function List() {
+function List(props) {
   const data = [
     {
         name: "16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
@@ -156,12 +156,13 @@ function List() {
 ]
 
 const [start , setStart] = useState(0);
-const [end , setEnd] = useState(4);
+const [end , setEnd] = useState(6);
 const [sata , setsata] = useState([]);
 
-  const click = (start , end) => {
-  setStart(start)
-  setEnd(end)
+  const click = () => {
+    props.callChunks()
+  // setStart(start)
+  // setEnd(end)
 };
 
 const setData=(data)=>{
@@ -170,11 +171,11 @@ setsata(data)
 
   return (
     <div>
-      <Upper list = {data} setData={setData} />
+      <Upper list = {props.data} setData={setData} />
       <div class="site-section site-section-sm bg-light">
         <div class="container">
-          <Middle list = {data} start={start} end={end} />
-          <Lower length = {data.length} itemPerPage={6} start={start} end={end} setCounter={click} />
+          <Middle list = {props.data} start={start} end={end} />
+          <Lower  length={props.size} itemPerPage={6} start={start} end={end} setData={click} />
         </div>
       </div>
     </div >
