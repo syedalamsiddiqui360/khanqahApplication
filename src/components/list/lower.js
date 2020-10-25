@@ -2,20 +2,25 @@ import React, { useState, useEffect } from 'react';
 
 function Lower(props) {
   const [counter, setCounter] = useState(1);
-  const [noOfButton, setNoOfButton] = useState(Math.round(props.length / props.itemPerPage));
+  const [noOfButton, setNoOfButton] = useState(1);
+  const [button, setButton] = useState();
+  // const [index, setIndex] = useState(1);
 
   useEffect(() => {
-    console.log(props.length +" "+ props.itemPerPage)
-    let value = props.itemPerPage * counter;
-    let start = value - props.itemPerPage;
-    console.log(start + " " + value)
-    props.setCounter(start, value)
+    setButton(Math.round(props.length / props.itemPerPage))
+    // console.log(props.length + " " + props.itemPerPage)
+    // let value = props.itemPerPage * counter;
+    // let start = value - props.itemPerPage;
+    // // console.log(start + " " + value)
+     props.setData()
   }, [counter]);
 
   const clickNext = () => {
-    if (counter == noOfButton) {
+    // setNoOfButton(Math.round(props.length / props.itemPerPage))
+    if (counter == button) {
       setCounter(counter);
     } else {
+      noOfButton != button ? setNoOfButton(noOfButton + 1) : setNoOfButton(noOfButton)
       setCounter(counter + 1)
     }
   };
@@ -27,6 +32,10 @@ function Lower(props) {
     }
   };
 
+  // const increaseButton = () => {
+  // };
+
+
   return (
     <div>
       <div class="col-md-12 text-center">
@@ -35,10 +44,16 @@ function Lower(props) {
             <div class="col-md-12 text-center">
               <a class="active" onClick={clickPre}>Prev</a>
               {new Array(noOfButton).fill("").map((value, index) => {
+
                 return (
-                  <a onClick={() => setCounter(index +1) } class={index + 1 === counter ? "active" : ""} >{index + 1}</a>
+                  <>
+                    <a onClick={() => { setCounter(index + 1) }} class={index + 1 === counter ? "active" : ""} >{index + 1}</a>
+                  </>
                 )
               })
+              }
+              {
+                noOfButton == button ? <></> : <span>...</span>
               }
               <a class="active" onClick={clickNext}>Next</a>
             </div>

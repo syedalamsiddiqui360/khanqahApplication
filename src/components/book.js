@@ -296,25 +296,18 @@ function Book() {
 
               <div class="bg-white widget border rounded">
                 <div data-aos="fade-left" data-aos-delay="400">
+                <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
+                <SmallSlider data={data} interval={1000} animation={"openAnimation"} />
 
-                  <a href="#"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid" /></a>
-                  <div class="p-4 bg-white">
-                    <span class="d-block text-secondary small text-uppercase">{data[0].date}</span>
-                    <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
-                    <p>{data[1].description}</p>
-                  </div>
                 </div>
               </div>
 
               <div class="bg-white widget border rounded">
                 <div data-aos="fade-left" data-aos-delay="600">
+                <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
 
-                  <a href="#"><img src="assets/images/img_3.jpg" alt="Image" class="img-fluid" /></a>
-                  <div class="p-4 bg-white">
-                    <span class="d-block text-secondary small text-uppercase">{data[0].date}</span>
-                    <h2 class="h5 text-black mb-3"><a href="#">{data[1].name}</a></h2>
-                    <p>{data[1].description}</p>
-                  </div>
+                <SmallSlider data={data} interval={2000} animation={"foldOutAnimation"} />
+
                 </div>
               </div>
 

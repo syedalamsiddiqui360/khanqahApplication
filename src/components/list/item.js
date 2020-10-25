@@ -5,6 +5,7 @@ import LowerItem1 from './lowerItem1'
 import Audio from './audio'
 
 function Item(props) {
+    const url = "http://localhost:9000/audio/get/"+props.audioUrl
     return (
         <>
             <div href="property-details.html" class="property-thumbnail">
@@ -12,7 +13,7 @@ function Item(props) {
                     <span class={props.tag1CN}>{props.tag1}</span>
                     <span class={props.tag2CN}>{props.tag2}</span>
                 </div>
-               <Audio audioUrl={props.audioUrl} />
+               <Audio audioUrl={url} />
             </div>
             <div class="p-4 property-body">
                 <LowerItem name={props.name} description={props.description} date={props.date} />
