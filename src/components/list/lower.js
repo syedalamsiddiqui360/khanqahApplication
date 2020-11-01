@@ -7,12 +7,12 @@ function Lower(props) {
   // const [index, setIndex] = useState(1);
 
   useEffect(() => {
-    setButton(Math.round(props.length / props.itemPerPage))
+    setButton(Math.ceil(props.length / props.itemPerPage))
     // console.log(props.length + " " + props.itemPerPage)
-    // let value = props.itemPerPage * counter;
-    // let start = value - props.itemPerPage;
-    // // console.log(start + " " + value)
-     props.setData()
+    let value = props.itemPerPage * counter;
+    let start = value - props.itemPerPage;
+    // console.log(start + " " + value)
+    props.setData(start , value)
   }, [counter]);
 
   const clickNext = () => {
@@ -20,10 +20,17 @@ function Lower(props) {
     if (counter == button) {
       setCounter(counter);
     } else {
-      noOfButton != button ? setNoOfButton(noOfButton + 1) : setNoOfButton(noOfButton)
+      noOfButton != button ? increaseNoOfButton() : setNoOfButton(noOfButton)
       setCounter(counter + 1)
+
     }
   };
+
+  const increaseNoOfButton = () => {
+    props.setChunks()
+    setNoOfButton(noOfButton + 1)
+  };
+
   const clickPre = () => {
     if (counter == 1) {
       setCounter(1);
@@ -42,12 +49,13 @@ function Lower(props) {
         <div class="site-pagination">
           <div class="row mt-5">
             <div class="col-md-12 text-center">
-              <a class="active" onClick={clickPre}>Prev</a>
+              
+              <a class="active" style={ counter === 1 ? {pointerEvents: 'none'}: {pointerEvents: ''}} href="#" onClick={clickPre}>Prev</a>
               {new Array(noOfButton).fill("").map((value, index) => {
 
                 return (
                   <>
-                    <a onClick={() => { setCounter(index + 1) }} class={index + 1 === counter ? "active" : ""} >{index + 1}</a>
+                    <a onClick={() => { setCounter(index + 1) }} class={index + 1 === counter ? "active" : ""} href="#">{index + 1}</a>
                   </>
                 )
               })
@@ -55,7 +63,7 @@ function Lower(props) {
               {
                 noOfButton == button ? <></> : <span>...</span>
               }
-              <a class="active" onClick={clickNext}>Next</a>
+              <a class="active" href="#" style={ counter === button ? {pointerEvents: 'none'}: {pointerEvents: ''}} onClick={clickNext}>Next</a>
             </div>
           </div>
         </div>

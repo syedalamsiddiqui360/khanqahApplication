@@ -1,71 +1,101 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 function Upper(props) {
-  const [category, setCategory] = useState("Bayan")
-  const [speaker, setSpeaker] = useState("Molana Abid Shah Sb Db")
-  const [type, setType] = useState("Recent")
+  const [category, setCategory] = useState(-1)
+  const [categoryInput, setCategoryInput] = useState()
+  const [categoryList, setCategoryList] = useState([{ id: -1, title: "Select Category" }])
+  const [person, setPerson] = useState(-1)
+  const [personInput, setPersonInput] = useState()
+  const [personList, setPersonList] = useState([{ id: -1, title: "Select Name" }])
+  const [type, setType] = useState(-1)
+  const [typeInput, setTypeInput] = useState()
+  const [typeList, setTypeList] = useState([{ id: -1, title: "Select Type" }])
+  const [isUpdate, setIsUpdate] = useState(false);
 
-  const categoryItem = [
-    {
-      id: 1,
-      value: "Ashar"
-    },
-    {
-      id: 2,
-      value: "Bayan"
-    },
-    {
-      id: 3,
-      value: "Zikar"
-    }
-  ]
+  useEffect(() => {
+    getPerson(props.type)
+    getType(props.type)
+    getCategory(props.type)
+  }, [])
 
-  const speakerItem = [
-    {
-      id: 1,
-      value: "Molana Abid Shah Sb Db"
-    },
-    {
-      id: 2,
-      value: "Sufi Shameem Sb Db"
-    }
-  ]
+  useEffect(() => {
+  }, [isUpdate])
 
-  const typeItem = [
-    {
-      id: 1,
-      value: "Important"
-    },
-    {
-      id: 2,
-      value: "Asfaar"
-    },
-    {
-      id: 3,
-      value: "Majlis"
-    },
-    {
-      id: 4,
-      value: "Short"
-    }
-  ]
-
-  const categoryHandle = (e) => {
-    setCategory(e.target.value)
+  const getType = (id) => {
+    let newList = [];
+    axios.post('http://localhost:9000/type/get_by_id', {
+      id: id
+    })
+      .then((res) => {
+        let data = res.data;
+        // console.log(data);
+        data.forEach((item) => {
+          newList.push({ id: item.id, title: item.title })
+        })
+        setTypeList(newList)
+        setIsUpdate(!isUpdate)
+      }).catch((err) => {
+        console.log('FAILURE!!' + err);
+      });
   }
 
-  const speakerHandle = (e) => {
-    setSpeaker(e.target.value)
+  const getCategory = (id) => {
+    let newList = [{ id: -1, title: "Select Category" }];
+    axios.post('http://localhost:9000/category/get_by_type', {
+      typeId: id
+    })
+      .then((res) => {
+        let data = res.data;
+        // console.log(data);
+        data.forEach((item) => {
+          newList.push({ id: item.id, title: item.title })
+        })
+        setCategoryList(newList)
+        setIsUpdate(!isUpdate)
+      }).catch((err) => {
+        console.log('FAILURE!!' + err);
+      });
   }
 
-  const typeHandle = (e) => {
-    setType(e.target.value)
+  const getPerson = (id) => {
+    axios.post('http://localhost:9000/person/get_by_type',{
+      type_id:id
+    })
+      .then((res) => {
+        let data = res.data;
+        console.log(data);
+        data.forEach((item) => {
+          personList.push({ id: item.id, title: item.title })
+        })
+        setPersonList(personList)
+        // setCategory(-1)
+        setIsUpdate(!isUpdate)
+      }).catch((err) => {
+        console.log('FAILURE!!' + err);
+      });
   }
 
+  const categoryHandle = (value, index) => {
+    setCategory(categoryList[index].id)
+    setCategoryInput(value)
+  }
 
+  const personHandle = (value, index) => {
+    setPersonInput(value)
+    setPerson(personList[index].id)
+    // index != 0 ? getType(personList[index].id) : setTypeList([{ id: -1, title: "Select Type" }])||setCategoryList([{ id: -1, title: "Select Category" }]) || setType(-1) || setCategory(-1)
+  }
 
-  const getData = () => {
+  const typeHandle = (value, index) => {
+    setTypeInput(value)
+    setType(typeList[index].id)
+    // index != 0 ? getCategory(typeList[index].id) : setCategoryList([{ id: -1, title: "Select Category" }]) || setCategory(-1)
+  }
+
+  const search = () => {
+    props.setData(person, type, category)
     console.log('Hello')
   };
 
@@ -79,40 +109,40 @@ function Upper(props) {
             <form class="form-search col-md-12" >
               <div class="row  align-items-end">
                 <div class="col-md-3">
-                  <label for="list-types">Category</label>
+                  <label for="list-types">Name</label>
                   <div class="select-wrap">
                     <span class="icon icon-arrow_drop_down"></span>
-                    <select name="list-types" value={category} onChange={categoryHandle} id="list-types" class="form-control d-block rounded-0">
-                      {categoryItem.map((item) => {
-                        return <option value={item.id}>{item.value}</option>
+                    <select name="offer-types" value={personInput} onChange={(e) => personHandle(e.target.value, e.target.options.selectedIndex)} id="offer-types" class="form-control d-block rounded-0">
+                      {personList.map((item) => {
+                        return <option value={item.id}>{item.title}</option>
                       })}
                     </select>
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="offer-types">Aawaz</label>
+                  <label for="offer-types">Type</label>
                   <div class="select-wrap">
                     <span class="icon icon-arrow_drop_down"></span>
-                    <select name="offer-types" value={speaker} onChange={speakerHandle} id="offer-types" class="form-control d-block rounded-0">
-                      {speakerItem.map((item) => {
-                        return <option value={item.id}>{item.value}</option>
+                    <select name="select-city" value={typeInput} onChange={(e) => typeHandle(e.target.value, e.target.options.selectedIndex)} id="select-city" class="form-control d-block rounded-0">
+                      {typeList.map((item) => {
+                        return <option value={item.id}>{item.title}</option>
                       })}
                     </select>
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="select-city">Select City</label>
+                  <label for="select-city">Category</label>
                   <div class="select-wrap">
                     <span class="icon icon-arrow_drop_down"></span>
-                    <select name="select-city" value={type} onChange={typeHandle} id="select-city" class="form-control d-block rounded-0">
-                      {typeItem.map((item) => {
-                        return <option value={item.id}>{item.value}</option>
+                    <select name="list-types" value={categoryInput} onChange={(e) => categoryHandle(e.target.value, e.target.options.selectedIndex)} id="list-types" class="form-control d-block rounded-0">
+                      {categoryList.map((item) => {
+                        return <option value={item.id}>{item.title}</option>
                       })}
                     </select>
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <input class="btn btn-success text-white btn-block rounded-0" value="Search" />
+                  <input type="button" onClick={search} class="btn btn-success text-white btn-block rounded-0" value="Search" />
                 </div>
               </div>
             </form>
