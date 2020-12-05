@@ -4,25 +4,28 @@ function Lower(props) {
   const [counter, setCounter] = useState(1);
   const [noOfButton, setNoOfButton] = useState(1);
   const [button, setButton] = useState();
-  // const [index, setIndex] = useState(1);
 
   useEffect(() => {
     setButton(Math.ceil(props.length / props.itemPerPage))
-    // console.log(props.length + " " + props.itemPerPage)
+    // console.log(props.length + " " + props.itemPerPage +" "+ button)
     let value = props.itemPerPage * counter;
     let start = value - props.itemPerPage;
-    // console.log(start + " " + value)
-    props.setData(start , value)
-  }, [counter]);
+    //  console.log(start + " from lower" + value+" noOfbutton"+ noOfButton +" counter"+counter +" "+props.noOfButton)
+    props.setData(start, value)
+  }, [counter, props.length, props.noOfButton]);
+
+  useEffect(() => {
+    setNoOfButton(1)
+    setCounter(1)
+    //  console.log(" noOfbutton"+ noOfButton +" counter"+counter +" "+props.noOfButton)
+  }, [props.updateLower]);
 
   const clickNext = () => {
-    // setNoOfButton(Math.round(props.length / props.itemPerPage))
-    if (counter == button) {
+    if (counter >= button) {
       setCounter(counter);
     } else {
       noOfButton != button ? increaseNoOfButton() : setNoOfButton(noOfButton)
       setCounter(counter + 1)
-
     }
   };
 
@@ -39,18 +42,14 @@ function Lower(props) {
     }
   };
 
-  // const increaseButton = () => {
-  // };
-
-
   return (
     <div>
       <div class="col-md-12 text-center">
         <div class="site-pagination">
           <div class="row mt-5">
             <div class="col-md-12 text-center">
-              
-              <a class="active" style={ counter === 1 ? {pointerEvents: 'none'}: {pointerEvents: ''}} href="#" onClick={clickPre}>Prev</a>
+
+              <a class="active" style={counter === 1 ? { pointerEvents: 'none' } : { pointerEvents: '' }} href="#" onClick={clickPre}>Prev</a>
               {new Array(noOfButton).fill("").map((value, index) => {
 
                 return (
@@ -61,9 +60,9 @@ function Lower(props) {
               })
               }
               {
-                noOfButton == button ? <></> : <span>...</span>
+                noOfButton >= button ? <></> : <span>...</span>
               }
-              <a class="active" href="#" style={ counter === button ? {pointerEvents: 'none'}: {pointerEvents: ''}} onClick={clickNext}>Next</a>
+              <a class="active" href="#" style={counter >= button ? { pointerEvents: 'none' } : { pointerEvents: '' }} onClick={clickNext}>Next</a>
             </div>
           </div>
         </div>
