@@ -41,10 +41,10 @@ function Upper(props) {
       });
   }
 
-  const getCategory = (id) => {
+  const getCategory = (typeId) => {
     let newList = [{ id: -1, title: "Select Category" }];
     axios.post('http://localhost:9000/category/get_by_type', {
-      typeId: id
+      typeId: typeId,
     })
       .then((res) => {
         let data = res.data;
@@ -60,17 +60,16 @@ function Upper(props) {
   }
 
   const getPerson = (id) => {
-    axios.post('http://localhost:9000/person/get_by_type',{
-      type_id:id
+    axios.post('http://localhost:9000/person/get_by_type', {
+      typeId: id
     })
       .then((res) => {
         let data = res.data;
-        console.log(data);
+        // console.log(data);
         data.forEach((item) => {
           personList.push({ id: item.id, title: item.title })
         })
         setPersonList(personList)
-        // setCategory(-1)
         setIsUpdate(!isUpdate)
       }).catch((err) => {
         console.log('FAILURE!!' + err);
@@ -85,24 +84,20 @@ function Upper(props) {
   const personHandle = (value, index) => {
     setPersonInput(value)
     setPerson(personList[index].id)
-    // index != 0 ? getType(personList[index].id) : setTypeList([{ id: -1, title: "Select Type" }])||setCategoryList([{ id: -1, title: "Select Category" }]) || setType(-1) || setCategory(-1)
   }
 
   const typeHandle = (value, index) => {
     setTypeInput(value)
     setType(typeList[index].id)
-    // index != 0 ? getCategory(typeList[index].id) : setCategoryList([{ id: -1, title: "Select Category" }]) || setCategory(-1)
   }
 
   const search = () => {
     props.setData(person, type, category)
-    console.log('Hello')
   };
 
 
   return (
     <div>
-
       <div class="site-section site-section-sm pt-2 pb-0 ">
         <div class="container">
           <div class="row">
@@ -162,8 +157,6 @@ function Upper(props) {
                     <a href="#" class="view-list px-3 border-right">Rent</a>
                     <a href="#" class="view-list px-3">Sale</a>
                   </div>
-
-
                   <div class="select-wrap">
                     <span class="icon icon-arrow_drop_down"></span>
                     <select class="form-control form-control-sm d-block rounded-0">
@@ -176,12 +169,9 @@ function Upper(props) {
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
     </div >
-
   );
 }
 

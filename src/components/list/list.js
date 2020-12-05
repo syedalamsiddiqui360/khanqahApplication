@@ -182,7 +182,7 @@ function List(props) {
       <div class="site-section site-section-sm bg-light">
         <div class="container">
           <Middle list={props.data} start={start} end={end} />
-          <Lower length={props.size} itemPerPage={props.noOfItem} start={start} end={end} setData={click} setChunks={setChunks} />
+          <Lower length={props.size} updateLower={props.updateLower} itemPerPage={props.noOfItem} start={start} end={end} setData={click} setChunks={setChunks} />
         </div>
       </div>
     </div >
