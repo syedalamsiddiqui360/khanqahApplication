@@ -1,56 +1,34 @@
 import React from 'react';
 
-function DetailList(props) {
-    const url = "audio/mohorrm.mp3"
-    const image = "assets/images/person_3.jpg"
+function DetailItem(props) {
+    // const url = "audio/mohorrm.mp3"
+    const fileUrl = "http://localhost:9000/pdf/get/" + props.fileName
+    const imageUrl = "http://localhost:9000/pdf/get/" + props.imageName        //720x460
+    const downloadUrl = "http://localhost:9000/pdf/download/" + props.imageName
     return (
         <div>
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="property-entry horizontal d-lg-flex">
-
-                        <a href="#" class="property-thumbnail h-100">
-                            <div class="offer-type-wrap">
-                                <span class={props.tag1CN}>{props.tag1}</span>
-                                <span class={props.tag2CN}>{props.tag2}</span>
-                            </div>
-                            <img src={props.imgSrc} alt="Image" class="img-fluid" />
-                        </a>
-
-                        <div class="p-4 property-body">
-                            <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                            <h2 class="property-title"><a href="#">{props.name}</a></h2>
-                            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> {props.description}</span>
-                            <strong class="property-price text-primary mb-3 d-block text-success">${props.price}</strong>
-                            <p>{props.detailDescription}</p>
-                            {/* <ul class="property-specs-wrap mb-3 mb-lg-0">
-                                            <li>
-                                                <span class="property-specs">Beds</span>
-                                                <span class="property-specs-number">2 <sup>+</sup></span>
-            
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">Baths</span>
-                                                <span class="property-specs-number">2</span>
-            
-                                            </li>
-                                            <li>
-                                                <span class="property-specs">SQ FT</span>
-                                                <span class="property-specs-number">5,500</span>
-            
-                                            </li>
-                                        </ul> */}
-                        </div>
-
-                    </div>
+            <a href={imageUrl} target="_blank" class="property-thumbnail h-100">
+                <div class="offer-type-wrap">
+                    <span class={props.tag1CN}>{props.tag1}</span>
+                    <span class={props.tag2CN}>{props.tag2}</span>
                 </div>
+                <img src={fileUrl} alt="Image" class="img-fluid" />       
+            </a>
+            <div class="p-4 property-body">
+                {/* <span class="d-block text-secondary small text-uppercase">{props.date}</span> */}
+                <h2 class="h5 text-black mb-3">{props.title}</h2>
+                <h2 class="property-title">{props.name}</h2>
+                <p>{props.description}</p>
+                <a href={downloadUrl}><span class="property-location d-block mb-3"><span class="property-icon icon-download"></span> download</span></a>
+                {/* <strong class="property-price text-primary mb-3 d-block text-success">Date: {props.date}</strong> */}
             </div>
+
 
         </div >
 
     );
 }
 
-export default DetailList;
+export default DetailItem;
 
 
