@@ -30,6 +30,7 @@ function Ashar() {
     const [noOfItem, setNoOFItem] = useState(6);
     const [isUpdate, setIsUpdate] = useState(false);
     const [updateLower, setUpdateLower] = useState(false);
+    const [listType, setListType] = useState("audio");
 
     useEffect(() => {
         getAshar();
@@ -97,7 +98,7 @@ function Ashar() {
 
     return (
         <div>
-            <List data={data} updateLower={updateLower} type={typeId} noOfItem={noOfItem} size={size} callChunks={callChunks} callData={callData} />
+            <List listType={listType} data={data} updateLower={updateLower} type={typeId} noOfItem={noOfItem} size={size} callChunks={callChunks} callData={callData} />
         </div>
     );
 }

@@ -1,98 +1,105 @@
-import React, {useEffect} from 'react';
-import Upper from './list/upper'
-import Item from './recentPost/recentItem';
-import Lower from './list/lower';
+import React, { useState, useEffect, useReducer } from 'react';
 import List from './list/list';
+import axios from 'axios';
 
-
-function Bayan() {
-  const data = [
-    {
-      name: "16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_1.jpg",
-      audioUrl: "audio/16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
-      date: "Jan 20th, 2019",
-      delay: 200
-    },
-    {
-      name: "140516_002.MP3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_2.jpg",
-      audioUrl: "audio/140516_002.MP3",
-      date: "Jan 20th, 2019",
-      delay: 300
-
-    },
-    {
-      name: "140603_001.MP3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      audioUrl: "audio/140603_001.MP3",
-      imgSrc: "assets/images/img_3.jpg",
-      date: "Jan 20th, 2019",
-      delay: 400
-
-    },
-    {
-      name: "16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_1.jpg",
-      audioUrl: "audio/16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
-      date: "Jan 20th, 2019",
-      delay: 200
-    },
-    {
-      name: "140516_002.MP3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_2.jpg",
-      audioUrl: "audio/140516_002.MP3",
-      date: "Jan 20th, 2019",
-      delay: 300
-
-    },
-    {
-      name: "140603_001.MP3",
-      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      audioUrl: "audio/140603_001.MP3",
-      imgSrc: "assets/images/img_3.jpg",
-      date: "Jan 20th, 2019",
-      delay: 400
-
+const myReducer = (state, action) => {
+    switch (action.type) {
+        case "chunks":
+            return { off: state.off + 6 };
+        case "isNewUrl":
+            return { isNewUrl: true, off: 0 };
+        default:
+            throw new Error();
     }
-  ]
+};
 
-  useEffect(()=>{
-    get(); 
- },[])
+function Ashar() {
 
-const  get = () =>{
-console.log("api")
- }
+    const [state, dispatch] = useReducer(myReducer, {
+        off: 0,
+        isNewUrl: false,
+    });
 
+    const [data, setData] = useState([]);
+    const [size, setSize] = useState(0);
+    const [offset, setOffset] = useState(1);
+    const [categoryId, setCategoryId] = useState(0);
+    const [typeId, setTypeId] = useState(2);
+    const [personId, setPersonId] = useState(0);
+    const [url, setUrl] = useState("get_all_by_type");
+    const [noOfItem, setNoOFItem] = useState(6);
+    const [isUpdate, setIsUpdate] = useState(false);
+    const [updateLower, setUpdateLower] = useState(false);
+    const [listType, setListType] = useState("audio");
 
-  return (
-    <div>
-    {/*   <Upper />
-       <div class="site-section">
-        <div class="container">
-          <div class="row">
-            {
-              data.map((value, index) => {
-                return (
-                  <Item delay={value.delay} name={value.name} audioUrl={value.audioUrl} description={value.description} imgSrc={value.imgSrc} date={value.date} />
-                )
-              })
+    useEffect(() => {
+        getAshar();
+    }, [url, categoryId, personId, state])
+
+    useEffect(() => {
+        console.log("use effect2")
+    }, [isUpdate])
+
+    const getAshar = () => {
+        let newList = [];
+        axios.post('http://localhost:9000/audio/' + url, {
+            categoryId: categoryId,
+            typeId: typeId,
+            personId: personId,
+            offset: state.off,
+            limit: noOfItem
+        }).then((res) => {
+            let data1 = res.data.data;
+            let length = res.data.length
+            // console.log(data1);
+            // console.log(data);
+            // console.log(length);
+            if (!state.isNewUrl) {
+                data1.forEach((item) => {
+                    data.push({ ...item })
+                })
+                setData(data)
+            } else {
+                data1.forEach((item) => {
+                    newList.push({ ...item })
+                })
+                setData(newList)
+                setUpdateLower(!updateLower)
             }
-          </div>
-          <div data-aos="fade-up">
-            <Lower />
-          </div>
+            setSize(length)
+            setIsUpdate(!isUpdate)
+        }).catch((err) => {
+            console.log('FAILURE!!' + err);
+        });
+    }
+
+    const callChunks = (chunks) => {
+        dispatch({ type: 'chunks' })
+        setOffset(offset + 1)
+    }
+
+    const callData = (person, type, category) => {
+        setOffset(0)
+        setData([])
+        setCategoryId(category)
+        setPersonId(person)
+        setIsUpdate(!isUpdate)
+
+        category != -1 && person != -1 ? callApi("get_all_by_type_person_category") :
+            category != -1 ? callApi("get_all_by_category") :
+                person != -1 ? callApi("get_all_by_type_person") :
+                    callApi("get_all_by_type", 0, 0);
+    }
+
+    const callApi = (url) => {
+        setUrl(url)
+        dispatch({ type: 'isNewUrl' })
+    }
+
+    return (
+        <div>
+            <List listType={listType} data={data} updateLower={updateLower} type={typeId} noOfItem={noOfItem} size={size} callChunks={callChunks} callData={callData} />
         </div>
-      </div> */}
-      <List  />
-    </div >
-
-  );
+    );
 }
-
-export default Bayan;
+export default Ashar;
