@@ -16,7 +16,7 @@ function Item(props) {
                <Audio audioUrl={url} />
             </div>
             <div class="p-4 property-body">
-                <LowerItem name={props.name} description={props.description} date={props.date} />
+                <LowerItem name={props.name} title={props.title} description={props.description} date={props.date} />
             </div>
         </>
     );

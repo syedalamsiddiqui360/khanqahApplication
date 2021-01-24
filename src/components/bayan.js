@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import List from './list/list';
 import axios from 'axios';
+import { useLocation, useParams } from "react-router";
 
 const myReducer = (state, action) => {
     switch (action.type) {
@@ -19,35 +20,56 @@ function Ashar() {
         off: 0,
         isNewUrl: false,
     });
-
+    const location = useLocation();
     const [data, setData] = useState([]);
     const [size, setSize] = useState(0);
     const [offset, setOffset] = useState(1);
     const [categoryId, setCategoryId] = useState(0);
-    const [typeId, setTypeId] = useState(2);
+    const [typeId, setTypeId] = useState(0);
     const [personId, setPersonId] = useState(0);
     const [url, setUrl] = useState("get_all_by_type");
     const [noOfItem, setNoOFItem] = useState(6);
     const [isUpdate, setIsUpdate] = useState(false);
     const [updateLower, setUpdateLower] = useState(false);
+    const [updateUper, setUpdateUper] = useState(false);
     const [listType, setListType] = useState("audio");
+    const [searchText, setSearchText] = useState("");
+    const param = useParams();
 
     useEffect(() => {
-        getAshar();
+        console.log(location)
     }, [url, categoryId, personId, state])
 
     useEffect(() => {
-        console.log("use effect2")
+        getAshar()
+    }, [url, state])
+
+    useEffect(() => {
+        getAshar()
+    }, [typeId])
+
+    useEffect(() => {
+
+        location.pathname === "/bayan" ? setTypeId(2) : location.pathname === "/ashar" ? setTypeId(1) : setTypeId(4)
+        location.pathname === "/book" ? setListType("pdf") : setListType("audio")
+        if (location.state != null) {
+            callData(location.state.personId, 0, location.state.categoryId, "")
+        }
+    }, [location.state, location.pathname])
+
+    useEffect(() => {
+        setUpdateUper(!updateUper)
     }, [isUpdate])
 
     const getAshar = () => {
         let newList = [];
-        axios.post('http://localhost:9000/audio/' + url, {
+        axios.post('http://localhost:9000/' + listType + '/' + url, {
             categoryId: categoryId,
             typeId: typeId,
             personId: personId,
             offset: state.off,
-            limit: noOfItem
+            limit: noOfItem,
+            search: searchText
         }).then((res) => {
             let data1 = res.data.data;
             let length = res.data.length
@@ -78,17 +100,19 @@ function Ashar() {
         setOffset(offset + 1)
     }
 
-    const callData = (person, type, category) => {
+    const callData = (person, type, category, search) => {
         setOffset(0)
         setData([])
         setCategoryId(category)
         setPersonId(person)
+        setSearchText(search)
+        // setTypeId(type)
         setIsUpdate(!isUpdate)
 
-        category != -1 && person != -1 ? callApi("get_all_by_type_person_category") :
-            category != -1 ? callApi("get_all_by_category") :
-                person != -1 ? callApi("get_all_by_type_person") :
-                    callApi("get_all_by_type", 0, 0);
+        search !== "" && search !== undefined ? callApi("get_all_by_Search") : category != 0 && person != 0 ? callApi("get_all_by_type_person_category") :
+            category != 0 ? callApi("get_all_by_category") :
+                person != 0 ? callApi("get_all_by_type_person") :
+                    callApi("get_all_by_type");
     }
 
     const callApi = (url) => {
@@ -98,7 +122,7 @@ function Ashar() {
 
     return (
         <div>
-            <List listType={listType} data={data} updateLower={updateLower} type={typeId} noOfItem={noOfItem} size={size} callChunks={callChunks} callData={callData} />
+            <List listType={listType} updateUper={updateUper} personId={personId} categoryId={categoryId} data={data} updateLower={updateLower} typeId={typeId} noOfItem={noOfItem} size={size} callChunks={callChunks} callData={callData} />
         </div>
     );
 }

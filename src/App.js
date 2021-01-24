@@ -22,14 +22,15 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/contact" component={Contact} />
-          <Route exact path="/book" component={Book} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/bayan" component={Bayan} />
-          <Route exact path="/ashar" component={Ashar} />
-          <Route exact path="/list" component={List} />
-          <Route exact path="/detail" component={Detail} /> 
+          <Route exact={true} path="/contact" component={Contact} />
+          <Route exact={true} path="/book" component={Bayan} />
+          <Route exact={true} path="/about" component={About} />
+          <Route exact={true} path="/bayan" component={Bayan} />
+          <Route exact={true} path="/ashar" component={Bayan} />
+          <Route exact={true} path="/list" component={List} />
+          <Route exact={true} path="/detail" component={Detail} /> 
+          <Route exact={true} path="/" component={Home} />
+
         </Switch>
         <Footer />
       </Router>
