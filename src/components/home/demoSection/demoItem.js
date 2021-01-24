@@ -1,38 +1,38 @@
 import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';import React from 'react';
+import 'react-h5-audio-player/lib/styles.css';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Item(props) {
-    const url = "audio/mohorrm.mp3"
-    const image = "assets/images/person_3.jpg"
-    return (
-        <div class="col-md-6 col-lg-4 mb-3" data-aos="fade-up" data-aos-delay={props.delay}>
+    const { data , name ,path } = props
+  const history = useHistory();
+    const url = "http://localhost:9000/audio/get/"
 
-            <div class="p-2 bg-white border rounded">
-            <h2 class="h3 text-center mb-1"><a href="#">{props.name}</a></h2>
-           <div class="p-2 " > <AudioPlayer
-                    autoPlayAfterSrcChange={false}
-                    src="audio/140516_002.MP3"
-                    style={{ paddingBottom: "0%" }}
-                  />
-               </div>
-               <div class="p-2 " > <AudioPlayer
-                    autoPlayAfterSrcChange={false}
-                    src="audio/140516_002.MP3"
-                    style={{ paddingBottom: "0%" }}
-                  />
-               </div>
-               <div class="p-2 " > <AudioPlayer
-                    autoPlayAfterSrcChange={false}
-                    src="audio/140516_002.MP3"
-                    style={{ paddingBottom: "0%" }}
-                  />
-               </div>
-               <a class="service text-center">
-               <p><span class="read-more">View More</span></p>
-               </a>
-                {/* <span class="d-block text-secondary small text-uppercase">{props.date}</span>
-                <h2 class="h5 text-black mb-3"><a href="#">{props.name}</a></h2>
-                <p>{props.description}</p> */}
+
+    useEffect(() => {
+    }, [data])
+
+    return (
+        <div class="col-md-6 col-lg-4 mb-3" data-aos="fade-up" data-aos-delay={300}>
+
+            <div class="p-1 bg-white border rounded">
+                <h2 class="h2 text-center mb-1">{name}</h2>
+                {
+                    data.map((item) => {
+                        return (
+                            <div class="p-2 " >
+                                <AudioPlayer
+                                    autoPlayAfterSrcChange={false}
+                                    src={url+item.fileName}
+                                />
+                            </div>
+                        )
+                    })
+                }
+
+                <a class="service text-center">
+                    <p><span class="read-more" style={{cursor: 'pointer'}} onClick={()=>{history.push(`${path}`,{ listType: "audio", categoryId: 0, personId: 0 })}}>View More</span></p>
+                </a>
             </div>
         </div>
 

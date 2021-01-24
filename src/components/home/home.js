@@ -1,20 +1,18 @@
 import React from 'react';
 import OurAgent from './ourAgent/ourAgent';
 import RecentPost from '../recentPost/recentPost';
-import DemoSection from './demoSection/demo';
-import List from '../list/list';
+import AudioSection from './demoSection/demo';
 import BookSection from './bookSection/bookSection'
 
 function Home(props) {
 
   return (
     <div>
-
       <div>
         <OurAgent />
       </div>
       <div>
-        <DemoSection />
+        <AudioSection />
       </div>
       <div>
         <BookSection />
@@ -22,11 +20,7 @@ function Home(props) {
       <div>
         <RecentPost />
       </div>
-
-
     </div>
-
-
   );
 }
 

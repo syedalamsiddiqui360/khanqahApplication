@@ -49,12 +49,12 @@ function Lower(props) {
           <div class="row mt-5">
             <div class="col-md-12 text-center">
 
-              <a class="active" style={counter === 1 ? { pointerEvents: 'none' } : { pointerEvents: '' }} href="#" onClick={clickPre}>Prev</a>
+              <a class="active" style={counter === 1 ? { pointerEvents: 'none' } : { cursor: 'pointer' }} onClick={clickPre}>Prev</a>
               {new Array(noOfButton).fill("").map((value, index) => {
 
                 return (
                   <>
-                    <a onClick={() => { setCounter(index + 1) }} class={index + 1 === counter ? "active" : ""} href="#">{index + 1}</a>
+                    <a onClick={() => { setCounter(index + 1) }} class={index + 1 === counter ? "active" : ""} style={{cursor: 'pointer'}}>{index + 1}</a>
                   </>
                 )
               })
@@ -62,7 +62,7 @@ function Lower(props) {
               {
                 noOfButton >= button ? <></> : <span>...</span>
               }
-              <a class="active" href="#" style={counter >= button ? { pointerEvents: 'none' } : { pointerEvents: '' }} onClick={clickNext}>Next</a>
+              <a class="active" style={counter >= button ? { pointerEvents: 'none' } : { cursor: 'pointer' }} onClick={clickNext}>Next</a>
             </div>
           </div>
         </div>

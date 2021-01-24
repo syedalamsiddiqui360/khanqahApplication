@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -29,59 +29,58 @@ function Navbar() {
                   <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
 
                   <ul class="site-menu js-clone-nav d-none d-lg-block">
-                    <li class="active">
-                      <NavLink to="/">Home</NavLink>
-                    </li>
-                    <li><NavLink to="/about">About</NavLink></li>
-                   
+
+                    <li><NavLink to="/" activeStyle={{ fontWeight: 'bold', color: 'white' }} exact={true} >Home</NavLink></li>
+                    <li><NavLink to="/about" activeStyle={{ fontWeight: 'bold', color: 'white' }} >About</NavLink></li>
+
                     <li class="has-children">
-                      <NavLink to="/bayan">Bayan</NavLink>
+                      <NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 0, personId: 0 } }} activeStyle={{ fontWeight: 'bold', color: 'white' }}>Bayan</NavLink>
                       <ul class="dropdown arrow-top">
                         <li class="has-children">
-                          <a href="#">Molana Abid Shah Sb Db</a>
+                          <NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 0, personId: 1 } }}>Molana Abid Shah Sb Db</NavLink>
                           <ul class="dropdown">
-                            <li><a href="#">Bayan</a></li>
-                            <li><a href="#">Zikar</a></li>
-                            <li><a href="#">Asfaar</a></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 4, personId: 1 } }}>Khanqah Majlis</NavLink></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 6, personId: 1 } }}>Short Bayan</NavLink></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 5, personId: 1 } }}>Asfaar Bayan</NavLink></li>
                           </ul>
                         </li>
                         <li class="has-children">
-                          <a href="#">Sufi Shamim Sb Rh</a>
+                          <NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 0, personId: 2 } }}>Sufi Shamim Sb RA</NavLink>
                           <ul class="dropdown">
-                            <li><a href="#">Bayan</a></li>
-                            <li><a href="#">Zikar</a></li>
-                            <li><a href="#">Asfaar</a></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 4, personId: 2 } }}>khanqah Majlis</NavLink></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 6, personId: 2 } }}>Short Bayan</NavLink></li>
+                            <li><NavLink to={{ pathname: "/bayan", state: { listType: "audio", categoryId: 5, personId: 2 } }}>Asfaar Bayan</NavLink></li>
                           </ul>
                         </li>
                       </ul>
                     </li>
 
                     <li class="has-children">
-                      <NavLink to="/ashar">Ashar</NavLink>
+                      <NavLink to={{ pathname: "/ashar", state: { listType: "audio", categoryId: 0, personId: 0 } }} activeStyle={{ fontWeight: 'bold', color: 'white' }}>Ashar</NavLink>
                       <ul class="dropdown arrow-top">
-                        <li><a href="#">Hamd</a></li>
-                        <li><a href="#">Aarifana Kalam</a></li>
-                        <li><a href="#">Naat shareef</a></li>
+                        <li><NavLink to={{ pathname: "/ashar", state: { listType: "audio", categoryId: 1, personId: 0 } }}>Hamd</NavLink></li>
+                        <li><NavLink to={{ pathname: "/ashar", state: { listType: "audio", categoryId: 3, personId: 0 } }}>Aarifana Kalam</NavLink></li>
+                        <li><NavLink to={{ pathname: "/ashar", state: { listType: "audio", categoryId: 2, personId: 0 } }}>Naat shareef</NavLink></li>
                       </ul>
                     </li>
 
                     <li class="has-children">
-                      <NavLink to="/book">Book</NavLink>
+                      <NavLink to={{ pathname: "/book", state: { listType: "pdf", categoryId: 0, personId: 0 } }} activeStyle={{ fontWeight: 'bold', color: 'white' }}>Book</NavLink>
                       <ul class="dropdown arrow-top">
-                        <li><a href="#">Al Abraar</a></li>
-                        <li><a href="#">English book</a></li>
-                        <li><a href="#">Urdu Book</a></li>
+                        <li><NavLink to={{ pathname: "/book", state: { listType: "pdf", categoryId: 11, personId: 0 } }}>Al Abraar</NavLink></li>
+                        <li><NavLink to={{ pathname: "/book", state: { listType: "pdf", categoryId: 10, personId: 0 } }}>English book</NavLink></li>
+                        <li><NavLink to={{ pathname: "/book", state: { listType: "pdf", categoryId: 9, personId: 0 } }}>Urdu Book</NavLink></li>
                       </ul>
                     </li>
                     <li class="has-children">
-                      <NavLink to="/detail">CDs</NavLink>
+                      <NavLink to="/detail" activeStyle={{ fontWeight: 'bold', color: 'white' }} >CDs</NavLink>
                       <ul class="dropdown arrow-top">
                         <li><a href="#">Molana Abid Shah Sb Db</a></li>
                         <li><a href="#">Sufi Shamim Sb Rh</a></li>
                       </ul>
                     </li>
-                    <li><NavLink to="/about">Ask</NavLink></li>
-                    <li><NavLink to="/contact">Contact Us</NavLink></li>
+                    <li><NavLink to="/contact" activeStyle={{ fontWeight: 'bold', color: 'white' }} >Contact Us</NavLink></li>
+                    {/* <li><NavLink to="/contact">Contact Us</NavLink></li> */}
                   </ul>
                 </nav>
               </div>
@@ -95,7 +94,7 @@ function Navbar() {
       <div class="slide-one-item home-slider owl-carousel">
 
         <div class="site-blocks-cover overlay"
-          style={{ background: 'url(assets/images/hero_bg_1.jpg)',height:"20px" }}
+          style={{ background: 'url(assets/images/hero_bg_1.jpg)', height: "20px" }}
           data-aos="fade" data-stellar-background-ratio="0.5">
           {/* <div class="container">
             <div class="row align-items-center justify-content-center text-center">
@@ -110,7 +109,7 @@ function Navbar() {
         </div>
 
         <div class="site-blocks-cover overlay"
-          style={{ background: 'url(assets/images/hero_bg_2.jpg)',height:"20px" }}
+          style={{ background: 'url(assets/images/hero_bg_2.jpg)', height: "20px" }}
           data-aos="fade" data-stellar-background-ratio="0.5">
           {/* <div class="container">
             <div class="row align-items-center justify-content-center text-center">
