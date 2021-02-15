@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useState , useEffect} from 'react';
 import Audio from '../../list/audio'
-
+import "./ourAgent.scss";
 function Item() {
+    const [date, setData] = useState(new Date());
+
+    useEffect(()=>{
+        setTimeout(() => {
+            console.log(new Date())
+            setData(new Date())
+        }, 1000)
+    },[date])
+
     return (
 
         <div class="col-md-12 col-lg-8">
@@ -9,8 +18,30 @@ function Item() {
 
                 <div class="row ">
                     <div class="col-md-6 col-lg-6 property-entry bg-light" data-aos="fade-down" data-aos-delay="500">
-
+                        {/* <div class="img-fluid rounded mb-4"
+                        style={{ background: 'url(assets/images/hero_bg_1.jpg)' }}>
+                        <div class="container">
+                            <div class="row align-items-center justify-content-center text-center">
+                            <div class="col-md-10">
+                                <span class="d-inline-block bg-danger text-white px-3 mb-0 property-offer-type rounded">For Sale</span>
+                                <h1 class="mb-0">625 S. Berendo St</h1>
+                                <p class="mb-0"><strong class="h2 text-success font-weight-bold">$1,000,500</strong></p>
+                                <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+                            </div>
+                            </div>
+                        </div>
+                        </div> */}
                         <img src="assets/images/hero_bg_1.jpg" alt="Image" class="img-fluid rounded mb-4" />
+                        {/* <div class="container"> */}
+                            {/* <div class="row align-items-center justify-content-center text-center"> */}
+                            <div className="ourAgent-time-container">
+                                {/* <span class="d-inline-block bg-danger text-white px-3 mb-0 property-offer-type rounded">For Sale</span> */}
+                                {/* <h7 class="mb-0">625 S. Berendo St</h7> */}
+                                <h3 class="text-black" ><strong >Pakistan Time</strong></h3>
+                                <p class="btn btn-white btn-outline-white py-3 px-3 rounded-0 btn-2">{`${date.getHours()}:${date.getMinutes()}:${date.getSeconds() < 10 ? '0'+date.getSeconds(): date.getSeconds()}`}</p>
+                            </div>
+                            {/* </div> */}
+                        {/* </div> */}
                     </div>
                     <div class="col-md-6 col-lg-6 property-entry bg-light " data-aos="fade-down" data-aos-delay="600">
 

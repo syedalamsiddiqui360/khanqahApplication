@@ -21,7 +21,7 @@ function Navbar() {
           <div class="container py-1">
             <div class="row align-items-center">
               <div class="col-8 col-md-8 col-lg-4">
-                <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Khanqah Akhterya<span class="text-danger">.</span></strong></a></h1>
+                <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Khushbu-e-Sunnat<span class="text-danger">.</span></strong></a></h1>
               </div>
               <div class="col-4 col-md-4 col-lg-8">
                 <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -91,12 +91,16 @@ function Navbar() {
         </div>
       </div>
 
-      <div class="slide-one-item home-slider owl-carousel">
+      <div class="slide-one-item home-slider owl-carousel" >
 
-        <div class="site-blocks-cover overlay"
+      <img src="assets/real_images/haram.jpg" style={{ height: "450px", objectFit:'cover',objectPosition:'bottom' }}/>
+      {/* <img src="assets/real_images/makka.jpg" style={{ height: "450px", objectFit:'cover',objectPosition:'bottom' }}/> */}
+        <img src="assets/real_images/msjid-e-nabvi.jpg" style={{ height: "450px", objectFit:'cover',objectPosition:'right' }}/>
+
+        {/* <div class="site-blocks-cover overlay"
           style={{ background: 'url(assets/images/hero_bg_1.jpg)', height: "20px" }}
           data-aos="fade" data-stellar-background-ratio="0.5">
-          {/* <div class="container">
+          <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
                 <span class="d-inline-block bg-success text-white px-3 mb-0 property-offer-type rounded">For Rent</span>
@@ -105,13 +109,13 @@ function Navbar() {
                 <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
-          </div> */}
-        </div>
+          </div>
+        </div> */}
 
-        <div class="site-blocks-cover overlay"
-          style={{ background: 'url(assets/images/hero_bg_2.jpg)', height: "20px" }}
+        {/* <div class="site-blocks-cover overlay"
+          style={{ background: 'url(assets/real_images/msjid-e-nabvi.jpg)' }}
           data-aos="fade" data-stellar-background-ratio="0.5">
-          {/* <div class="container">
+          <div class="container">
             <div class="row align-items-center justify-content-center text-center">
               <div class="col-md-10">
                 <span class="d-inline-block bg-danger text-white px-3 mb-0 property-offer-type rounded">For Sale</span>
@@ -120,8 +124,8 @@ function Navbar() {
                 <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
               </div>
             </div>
-          </div> */}
-        </div>
+          </div>
+        </div> */}
 
       </div>
 

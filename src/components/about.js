@@ -8,15 +8,15 @@ function About() {
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <img src="images/about.jpg" alt="Image" class="img-fluid" />
+                            <img src="assets/real_Images/ashaar.jpg" alt="Image" class="img-fluid" />
                         </div>
                         <div class="col-md-5 ml-auto" data-aos="fade-up" data-aos-delay="200" >
-                            <div class="site-section-title">
-                                <h2>Our Company</h2>
+                            <div class="site-title">
+                                <h2>Khushbu-e-Sunnat</h2>
                             </div>
                             <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus in cum odio.</p>
                             <p>Illum repudiandae ratione facere explicabo. Consequatur dolor optio iusto, quos autem voluptate ea? Sunt laudantium fugiat, mollitia voluptate? Modi blanditiis veniam nesciunt architecto odit voluptatum tempore impedit magnam itaque natus!</p>
-                            <p><a href="#" class="btn btn-outline-primary rounded-0 py-2 px-5">Read More</a></p>
+                            {/* <p><a href="#" class="btn btn-outline-primary rounded-0 py-2 px-5">Read More</a></p> */}
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ function About() {
             </div>
 
 
-            <div class="site-section bg-light">
+            {/* <div class="site-section bg-light">
                 <div class="container" data-aos="fade">
                     <div class="row mb-5 justify-content-center">
                         <div class="col-md-7">
@@ -175,7 +175,7 @@ function About() {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div class="site-section">
                 <div class="container">

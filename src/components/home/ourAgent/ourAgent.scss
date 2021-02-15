@@ -1,0 +1,14 @@
+.ourAgent{
+    &-time-container{
+     position: absolute;
+     top: 15%;
+     left: 23%;
+     text-align: center;
+     &-heading{
+         color: blue;
+        }
+        &-text{
+             color: brown;
+            }
+    }
+}
