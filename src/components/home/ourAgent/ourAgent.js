@@ -1,43 +1,87 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Item from './item';
 import SmallSlider from '../../smallSlider'
+import axios from 'axios';
 
 function OurAgent(props) {
-  const data = [
+  const data1 = [
     {
       name: "16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
       description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_1.jpg",
+      fileName: "assets/real_Images/amal-1.jpg",
       audioUrl: "audio/16 Sunday 24-04-2011 - Ashaar (after bayan).mp3",
       date: "Jan 20th, 2019",
       delay: 200,
-      interval:1000,
-      animation:"scaleOutAnimation"
+      interval: 1000,
+      animation: "scaleOutAnimation"
     },
     {
       name: "140516_002.MP3",
       description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
-      imgSrc: "assets/images/img_2.jpg",
+      fileName: "assets/real_Images/amal-2.jpg",
       audioUrl: "audio/140516_002.MP3",
       date: "Jan 20th, 2019",
       delay: 300,
-      interval:1000,
-      animation:"scaleOutAnimation"
+      interval: 1000,
+      animation: "scaleOutAnimation"
 
     },
     {
       name: "140603_001.MP3",
       description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
       audioUrl: "audio/140603_001.MP3",
-      imgSrc: "assets/images/img_3.jpg",
+      fileName: "assets/real_Images/amal-3.jpg",
       date: "Jan 20th, 2019",
       delay: 400,
-      interval:1000,
-      animation:"scaleOutAnimation"
+      interval: 1000,
+      animation: "scaleOutAnimation"
 
-    }
+    },
+    {
+      name: "140603_001.MP3",
+      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
+      audioUrl: "audio/140603_001.MP3",
+      fileName: "assets/real_Images/amal-4.jpg",
+      date: "Jan 20th, 2019",
+      delay: 400,
+      interval: 1000,
+      animation: "scaleOutAnimation"
+
+    },
+    {
+      name: "140603_001.MP3",
+      description: "625 S. Berendo St Unit 607 Los Angeles, CA 90005 ",
+      audioUrl: "audio/140603_001.MP3",
+      fileName: "assets/real_Images/amal-5.jpg",
+      date: "Jan 20th, 2019",
+      delay: 400,
+      interval: 1000,
+      animation: "scaleOutAnimation"
+
+    },
   ]
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    callApi();
+  }, [])
+
+  useEffect(()=>{
+
+  },data)
+  const callApi = () => {
+    let data = [];
+    axios.post('http://localhost:9000/images/get_by_slider_id', {
+      limit: 5,
+      sliderId: 2
+    })
+      .then((res) => {
+        data = res.data;
+        setData(data)
+      }).catch((err) => {
+        console.log('FAILURE!!' + err);
+      });
+  }
 
   return (
     <div>
@@ -55,11 +99,11 @@ function OurAgent(props) {
             <div class="col-lg-4 " data-aos="fade-right" data-aos-delay="600">
 
               <div class="pb-5">
-              <SmallSlider data={data} interval={900} animation={"foldOutAnimation"} />
+                <SmallSlider data={data} interval={900} animation={"foldOutAnimation"} />
               </div>
 
               <div class="pb-5">
-              <SmallSlider data={data} interval={2000} animation={"fallAnimation"} />
+                <SmallSlider data={data} interval={2000} animation={"fallAnimation"} />
               </div>
               {/* <div class="p-4 bg-white">
                 <span class="d-block text-secondary small text-uppercase">{props.date}</span>

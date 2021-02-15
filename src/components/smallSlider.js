@@ -11,11 +11,11 @@ import 'react-awesome-slider/dist/custom-animations/scale-out-animation.css';
 function SmallSlider(props) {
     const [interval, setInterval] = useState(1000);
     const [animation, setAnimation] = useState("scaleOutAnimation");
+    const url = "http://localhost:9000/pdf/get/";
 
     const AutoplaySlider = withAutoplay(AwesomeSlider);
 
    useEffect  (()=>{
-       console.log("useEffect")
        setVariable()
     }, [])
 
@@ -40,16 +40,15 @@ const setVariable=()=>{
                 {
                     props.data.map((value) => {
                         return (
-
-                            <div data-src={value.imgSrc} />
+                            <div>
+                                <img src={url + value.imageName} alt="Image"  />
+                             </div>
                         )
                     })
 
 
                 }
             </AutoplaySlider>
-
-
         </div >
 
     )

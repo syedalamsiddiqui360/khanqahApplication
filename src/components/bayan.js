@@ -14,7 +14,7 @@ const myReducer = (state, action) => {
     }
 };
 
-function Ashar() {
+function Audio() {
 
     const [state, dispatch] = useReducer(myReducer, {
         off: 0,
@@ -126,4 +126,4 @@ function Ashar() {
         </div>
     );
 }
-export default Ashar;
+export default Audio;

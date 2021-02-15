@@ -12,7 +12,7 @@ function DetailItem(props) {
                     <span class={props.tag1CN}>{props.tag1}</span>
                     <span class={props.tag2CN}>{props.tag2}</span>
                 </div>
-                <img src={fileUrl} alt="Image" class="img-fluid" />       
+                <img src={imageUrl} alt="Image" class="img-fluid" />       
             </a>
             <div class="p-4 property-body">
                 {/* <span class="d-block text-secondary small text-uppercase">{props.date}</span> */}
