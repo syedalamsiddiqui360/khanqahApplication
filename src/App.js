@@ -8,10 +8,8 @@ import About from './components/about'
 import Bayan from './components/bayan'
 import Ashar from './components/ashar'
 import Footer from './components/footer'
-import Contact from './components/contact'
+import Contact from './components/contact/contact'
 import Navbar from './components/navbar';
-
-
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
