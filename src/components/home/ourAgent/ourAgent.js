@@ -87,14 +87,14 @@ function OurAgent(props) {
     <div>
       <div class="site-section">
         <div class="container">
-          {/* <div class="row mb-0 justify-content-center">
-            <div class="col-md-7">
-              <div class="site-section-title text-center">
-                <h2>Our Agents</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima quibusdam, laboriosam.</p>
-              </div>
-            </div>
-          </div> */}
+          <div class="row mb-10 justify-content-center">
+            {/* <div class="col-md-7"> */}
+              {/* <div class="site-section-title text-center"> */}
+                {/* <h2>Our Agents</h2> */}
+                <marquee class="h5 text-black mb-3" behavior="scroll" direction="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum pariatur labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis! Optio minima quibusdam, laboriosam.</marquee>
+              {/* </div> */}
+            {/* </div> */}
+          </div>
           <div class="row">
             <div class="col-lg-4 " data-aos="fade-right" data-aos-delay="600">
 

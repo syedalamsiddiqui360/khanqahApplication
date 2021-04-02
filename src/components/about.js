@@ -23,7 +23,7 @@ function About() {
             </div>
 
 
-            <div class="site-section">
+            {/* <div class="site-section">
                 <div class="container">
                     <div class="row mb-5 justify-content-center" data-aos="fade-up" >
                         <div class="col-md-7">
@@ -98,7 +98,7 @@ function About() {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <div class="site-section bg-light">

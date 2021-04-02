@@ -2870,6 +2870,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, can
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001035.tgz#2bb53b8aa4716b2ed08e088d4dc816a5fe089a1e"
   integrity sha512-C1ZxgkuA4/bUEdMbU5WrGY4+UhMFFiXrgNAfxiMIqWgFTWfv/xsZCS2xEHT2LMq7xAZfuAnu6mcqyDl0ZR6wLQ==
 
+captcha-text-generator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/captcha-text-generator/-/captcha-text-generator-1.0.0.tgz#4fc2b13a62506332024db6158d68e8e5dd6327cc"
+  integrity sha512-p1Fb+yzNhvXIA7Dc2vx4+fOoVs8QopBmq01lIKItPEIewc0p6rkBq17EXEcPKhuJMKJhJXCFxYk78VxVpJtv4Q==
+
 capture-exit@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/capture-exit/-/capture-exit-2.0.0.tgz#fb953bfaebeb781f62898239dabb426d08a509a4"
