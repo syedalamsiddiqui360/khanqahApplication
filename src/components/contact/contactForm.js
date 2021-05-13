@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef , useCallback } from 'react';
 import axios from 'axios';
+import Captcha from './captcha';
+import Popup from './popup';
 
 function ContactForm() {
     const [data, setData] = useState({
@@ -7,8 +9,14 @@ function ContactForm() {
         'email': '',
         'phoneNumber': ''
     });
+    const [captchaText , setCaptchaText] = useState('');
+    const [captchaValue , setCaptchaValue] = useState('');
+    const [captchaMessage , setCaptchaMessage] = useState('');
+    const [isUpdate , setIsUpdate] = useState(false);
 
-    // useEffect(()=>{},[data])
+    useEffect(()=>{
+        console.log("faizan")
+    },[isUpdate])
 
     const handleName = (e) => {
         data.name = e.target.value;
@@ -23,14 +31,30 @@ function ContactForm() {
     }
 
     const submit = () => {
-        console.log(data)
-        axios.post('http://localhost:9000/follower/add_whatsapp_no', data)
-        .then((res) => {
-            // data = res.data;
-            console.log(res)
-        }).catch((err) => {
-            console.log('FAILURE!!' + err);
-        });
+        console.log(captchaValue)
+        if(data.name !== "" && data.email !== "" && data.phoneNumber !== "" && captchaValue !== ""){
+            if(captchaValue === captchaText){
+                axios.post('http://localhost:9000/follower/add_whatsapp_no', data)
+                .then((res) => {
+                    // data = res.data;
+                    console.log(res)
+                }).catch((err) => {
+                    console.log('FAILURE!!' + err);
+                });
+            }
+            else{
+                setCaptchaMessage('captcha text not match')
+                setIsUpdate(!isUpdate);
+            }
+        }
+        else{
+        console.log("data")
+        }
+    }
+
+
+    const handleCaptcha = (e) =>{
+        setCaptchaValue(e.target.value);
     }
 
     return (
@@ -56,7 +80,23 @@ function ContactForm() {
                 </div>
                 <div class="row form-group">
                     <div class="col-md-12">
-                        <button onClick={submit} class="btn btn-primary  py-2 px-4 rounded-0"> Save</button>
+                        <div>
+                            <Captcha captchaText={captchaText} setCaptchaText={setCaptchaText} isUpdate={isUpdate}/>
+                        </div>
+                        <input class="form-control" type='text' required  onChange={(e) => handleCaptcha(e)} placeholder="Enter Captcha" />           
+                    </div>
+                </div>
+                {captchaMessage !== '' && (
+                   <div class="row form-group">
+                   <div class="col-md-12">
+                       <label class="font-weight-bold text-danger" for="email">{captchaMessage}</label>
+                   </div>
+               </div>
+                )}
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <Popup/>
+                        <button data-toggle="modal" data-target="#exampleModalScrollable" class="btn btn-primary  py-2 px-4 rounded-0"> Save</button>
                     </div>
                 </div>
             </div>
