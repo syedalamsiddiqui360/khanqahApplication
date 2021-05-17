@@ -1,8 +1,11 @@
 import React, {useState , useEffect} from 'react';
-import Audio from '../../list/audio'
+import Audio from '../../list/audio';
 import "./ourAgent.scss";
+import Subscribe from './subscribeForm';
+
 function Item() {
     const [date, setData] = useState(new Date());
+    const [open, setOpen] = useState(false);
 
     useEffect(()=>{
         setTimeout(() => {
@@ -10,6 +13,14 @@ function Item() {
             setData(new Date())
         }, 1000)
     },[date])
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
 
@@ -31,7 +42,7 @@ function Item() {
                             </div>
                         </div>
                         </div> */}
-                        <img src="assets/images/hero_bg_1.jpg" alt="Image" class="img-fluid rounded mb-4" />
+                        <img src="assets/images/bg_design_1.jpg" alt="Image" class="img-fluid rounded mb-2 mt-2 " />
                         {/* <div class="container"> */}
                             {/* <div class="row align-items-center justify-content-center text-center"> */}
                             <div className="ourAgent-time-container">
@@ -45,7 +56,14 @@ function Item() {
                     </div>
                     <div class="col-md-6 col-lg-6 property-entry bg-light " data-aos="fade-down" data-aos-delay="600">
 
-                        <img src="assets/images/hero_bg_2.jpg" alt="Image" class="img-fluid rounded mb-4" />
+                        <img src="assets/images/bg_design_1.jpg" alt="Image" class="img-fluid rounded mb-4 mt-2" />
+                        <div className="ourAgent-time-container">
+                                {/* <span class="d-inline-block bg-danger text-white px-3 mb-0 property-offer-type rounded">For Sale</span> */}
+                                {/* <h7 class="mb-0">625 S. Berendo St</h7> */}
+                                <h3 class="text-black" ><strong >Get Latest update</strong></h3>
+                                <p class="btn btn-white btn-outline-white py-3 px-3 rounded-0 btn-2" onClick={handleClickOpen}>click here</p>
+                        </div>
+                    
                     </div>
                 </div>
 
@@ -63,6 +81,7 @@ function Item() {
                     <Audio audioUrl={"audio/16 Sunday 24-04-2011 - Ashaar (after bayan).mp3"} />
                 </div>
             </div>
+            <Subscribe open={open} setOpen={setOpen} />
         </div>
     )
 }
