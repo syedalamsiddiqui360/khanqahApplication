@@ -71,7 +71,7 @@ function OurAgent(props) {
   },data)
   const callApi = () => {
     let data = [];
-    axios.post('http://localhost:9000/images/get_by_slider_id', {
+    axios.post('http://localhost:9000/image/get_by_slider_id', {
       limit: 5,
       sliderId: 2
     })

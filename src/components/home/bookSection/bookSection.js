@@ -39,8 +39,8 @@ function BookSection() {
 
     useEffect(() => {
         callApi(4, 9);
-        callApi(4, 10);
-        callApi(5, 11);
+        callApi(4, 8);
+        callApi(5, 10);
     }, [])
 
     useEffect(() => {
@@ -70,18 +70,18 @@ function BookSection() {
                         data.categoryId = 9
                         setSet1(data)
                         break;
-                    case 4, 10:
+                    case 4, 8:
                         data.name = "English Books"
                         data.path = "/book"
                         data.interval = 3000
-                        data.categoryId = 10
+                        data.categoryId = 8
                         setSet2(data)
                         break;
-                    case 5, 11:
-                        data.name = "Al Abraar Resala"
+                    case 5, 10:
+                        data.name = "Al Abraar Magzeen"
                         data.path = "/book"
                         data.interval = 1500
-                        data.categoryId = 11
+                        data.categoryId = 10
                         setSet3(data)
                         break;
                 }
